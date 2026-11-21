@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vallon Privacy Policy</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f8fc;
+      --card: #ffffff;
+      --ink: #111827;
+      --muted: #4b5563;
+      --accent: #2455c4;
+      --border: #e5e7eb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1120;
+        --card: #111827;
+        --ink: #f3f4f6;
+        --muted: #9ca3af;
+        --accent: #7aa2ff;
+        --border: #1f2937;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px 16px 48px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+    }
+    h1 { margin-top: 0; font-size: 1.75rem; line-height: 1.25; }
+    h2 { margin-top: 1.75rem; font-size: 1.15rem; }
+    p, li { color: var(--muted); }
+    strong { color: var(--ink); }
+    a { color: var(--accent); }
+    .meta { font-size: 0.92rem; color: var(--muted); margin-bottom: 1.5rem; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Vallon Privacy Policy</h1>
+    <p class="meta">
+      <strong>App:</strong> Vallon (<code>com.vallon.app</code>)<br>
+      <strong>Effective Date:</strong> November 21, 2026
+    </p>
+
+    <p>
+      Vallon is a local personal firewall for Android. This policy explains what data Vallon
+      processes on your device, what limited diagnostic or purchase-verification data may be
+      transmitted off-device, and how Android permissions are used.
+    </p>
+
+    <h2>1. Local Firewall &amp; Android VpnService</h2>
+    <p>
+      Vallon uses Android’s <code>VpnService</code> interface locally on your device to block
+      network traffic for apps you do not allow. Apps you select as allowed bypass the local
+      VPN interface and connect directly to the internet.
+    </p>
+    <ul>
+      <li>Vallon <strong>does not</strong> route your traffic through any remote VPN server.</li>
+      <li>Vallon <strong>does not</strong> inspect, log, store, or transmit your network packets, browsing history, DNS queries, or traffic contents.</li>
+      <li>All firewall rules, profiles, and schedules are stored locally on your device.</li>
+    </ul>
+
+    <h2>2. Installed Applications Inventory</h2>
+    <p>
+      Vallon requests access to the list of installed applications on your device
+      (<code>QUERY_ALL_PACKAGES</code>), including system and non-launchable network-capable
+      apps, solely so you can choose which apps are allowed to connect and so Vallon can
+      apply per-UID firewall rules locally.
+    </p>
+    <p>
+      Your installed-app list and app selections <strong>never leave your device</strong>.
+    </p>
+
+    <h2>3. Crash Diagnostics (Firebase Crashlytics)</h2>
+    <p>
+      Release builds of Vallon include Google Firebase Crashlytics to diagnose crashes and
+      stability issues. When crash reporting is active, Crashlytics may transmit:
+    </p>
+    <ul>
+      <li>Crash stack traces and app state at the time of a crash</li>
+      <li>Device metadata (such as OS version and device model)</li>
+      <li>Firebase installation and session identifiers</li>
+    </ul>
+    <p>
+      Vallon does <strong>not</strong> attach your selected app rules, installed-app list,
+      or network packet contents to crash reports. For more information on how Google
+      processes Firebase Crashlytics data, see
+      <a href="https://firebase.google.com/support/privacy">Privacy and Security in Firebase</a>.
+    </p>
+
+    <h2>4. Subscriptions &amp; Purchase Verification (Vallon Plus)</h2>
+    <p>
+      If Vallon Plus subscriptions are enabled and you choose to subscribe, payments are
+      processed by Google Play. Vallon does not collect or store your payment card details.
+    </p>
+    <p>
+      To verify active subscription entitlement, Vallon transmits your Google Play
+      <code>purchaseToken</code> over HTTPS to the configured verification service. The
+      token is stored locally in private no-backup app storage on your device so your
+      entitlement can be re-verified.
+    </p>
+
+    <h2>5. No Accounts, Ads, or Usage Analytics</h2>
+    <ul>
+      <li>Vallon does <strong>not</strong> require user accounts or login credentials.</li>
+      <li>Vallon does <strong>not</strong> include advertising SDKs or ad-ID tracking.</li>
+      <li>Vallon does <strong>not</strong> include behavioral usage analytics.</li>
+    </ul>
+
+    <h2>6. Permissions Used</h2>
+    <ul>
+      <li><strong><code>BIND_VPN_SERVICE</code> / <code>FOREGROUND_SERVICE_SYSTEM_EXEMPTED</code>:</strong> Runs the local on-device firewall service and displays its ongoing status notification.</li>
+      <li><strong><code>QUERY_ALL_PACKAGES</code>:</strong> Displays installed network-capable apps locally so you can manage firewall rules.</li>
+      <li><strong><code>INTERNET</code>:</strong> Used by Firebase Crashlytics crash reporting and Google Play purchase verification (not used for remote VPN tunneling).</li>
+      <li><strong><code>POST_NOTIFICATIONS</code>:</strong> Optional permission to show the ongoing firewall notification.</li>
+      <li><strong><code>SCHEDULE_EXACT_ALARM</code>:</strong> Optional user-granted permission used only for timed Plus routines (schedules, focus sessions, and temporary allowances).</li>
+    </ul>
+
+    <h2>7. Data Retention &amp; Deletion</h2>
+    <p>
+      Firewall rules, routines, and locally cached receipt tokens remain on your device until
+      you clear app data or uninstall Vallon. Because Vallon does not create user accounts,
+      there is no account profile to delete on our servers.
+    </p>
+
+    <h2>8. Changes to This Policy</h2>
+    <p>
+      We may update this Privacy Policy if app features or legal requirements change. The
+      effective date at the top of this page reflects the latest revision.
+    </p>
+
+    <h2>9. Contact</h2>
+    <p>
+      If you have questions about this Privacy Policy or Vallon’s data practices, contact us
+      at <a href="mailto:cyberdevs505@gmail.com">cyberdevs505@gmail.com</a>.
+    </p>
+  </main>
+</body>
+</html>
